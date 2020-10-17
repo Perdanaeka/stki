@@ -14,7 +14,7 @@ include "koneksi.php";
 //$query2 = "delete from tokens";
 //$result2 = mysqli_query($koneksi,$query2);
 
-$query = "SELECT *,LOG10(jmldok/katajmldok) idf,tf*(LOG10(jmldok/katajmldok)) tf_idf from (SELECT d.id,d.kata,d.freq,d.jmlkata,d.tf,e.katajmldok from (SELECT a.id,a.kata,a.freq,b.jmlkata,(a.freq/b.jmlkata) tf from (SELECT * FROM tfidf) AS a JOIN (SELECT id,SUM(freq) jmlkata FROM tfidf GROUP BY id) AS b ON a.id=b.id) AS d join (SELECT kata,COUNT(kata) katajmldok FROM tfidf GROUP BY kata) AS e ON d.kata=e.kata) AS f join (SELECT COUNT(id) jmldok FROM (SELECT * FROM tfidf GROUP BY id) AS c) AS g";
+$query = "SELECT *,LOG10(jmldok/katajmldok) idf,tf*(LOG10(jmldok/katajmldok)) tf_idf from (SELECT d.id,d.kata,d.freq,d.jmlkata,d.tf,e.katajmldok from (SELECT a.id,a.kata,a.freq,b.jmlkata,(a.freq/b.jmlkata) tf from (SELECT * FROM token) AS a JOIN (SELECT id,SUM(freq) jmlkata FROM token GROUP BY id) AS b ON a.id=b.id) AS d join (SELECT kata,COUNT(kata) katajmldok FROM token GROUP BY kata) AS e ON d.kata=e.kata) AS f join (SELECT COUNT(id) jmldok FROM (SELECT * FROM token GROUP BY id) AS c) AS g";
 $result = mysqli_query($koneksi,$query);
 $numrows = mysqli_num_rows($result);
 $no=1;

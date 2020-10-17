@@ -39,6 +39,10 @@ $no++;
 }
 }
 
+
+$queryTF = "SELECT * FROM tfidf";
+$resultTF = mysqli_query($koneksi,$queryTF);
+
 $query2 = "SELECT * FROM token";
 $result2 = mysqli_query($koneksi,$query2);
 $no=1;
@@ -57,4 +61,5 @@ echo "<td><font color=blue></font>" .  $frek3 . "<br></td>";
 echo "</tr>";
 $no++;
 }
+
 ?>
